@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod rwsxXst 
+chmod -R ugo+X 

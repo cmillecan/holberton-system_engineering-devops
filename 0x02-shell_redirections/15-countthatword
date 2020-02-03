@@ -1,2 +1,3 @@
 #!/bin/bash
-grep -n bin
+grep bin | wc -l
+

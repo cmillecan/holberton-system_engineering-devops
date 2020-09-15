@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 """Export data in the CSV format"""
-import requests
-import sys
-import csv
 
 if __name__ == '__main__':
+    import requests
+    import sys
+    import csv
 
     user_id = sys.argv[1]
     user = requests.get('https://jsonplaceholder.typicode.com/users/{}'.

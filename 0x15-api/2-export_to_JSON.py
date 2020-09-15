@@ -5,7 +5,7 @@
 if __name__ == '__main__':
     import requests
     import sys
-    import csv
+    import json
 
     user_id = sys.argv[1]
     user = requests.get('https://jsonplaceholder.typicode.com/users/{}'.

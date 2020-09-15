@@ -12,7 +12,7 @@ if __name__ == '__main__':
                         format(user_id))
 
     username = user.json()[0].get('username')
-    todos = requests.get('https://jsonplaceholder.typicode.com/todos',
+    todos = requests.get('https://jsonplaceholder.typicode.com/todos/',
                          params={'userId': user_id})
     todos = todos.json()
 

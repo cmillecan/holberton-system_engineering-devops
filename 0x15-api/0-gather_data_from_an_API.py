@@ -18,7 +18,7 @@ if __name__ == '__main__':
                          params={'userId': user_id})
     todos = todos.json()
     total_task = lens(todos)
-    todos_complete = [task for task in todos if task['complete']]
+    todos_complete = [task for task in todos if task['completed']]
     completed_tasks - len(todos_complete)
 
     print('Employee {} is done with tasks({}/{})'.

@@ -8,7 +8,7 @@ import requests
 
 def top_ten(subreddit):
     """Prints the titles of top 10 posts"""
-    r = request.get('https://www.reddit.com/r/{}/hot.json?limit=10'.
+    r = requests.get('https://www.reddit.com/r/{}/hot.json?limit=10'.
                     format(subreddit), headers={'User-Agent': 'custom'},
                     allow_redirects=False)
     if r.status_code == 200:

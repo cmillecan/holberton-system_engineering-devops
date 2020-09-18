@@ -7,17 +7,15 @@ import requests
 
 
 def recurse(subreddit, hot_list=[], next_page=''):
-    """Returns list of titles"""
-    r = requests.get('https://www.reddit.com/r/{}/hot.json'.
+    r = requests.get('https://www.reddit.com/r/{}/hot.json?after={}'.
                      format(subreddit, next_page),
-                     headers={'User-Agent': 'custom'},
-                     allow_redirects=False)
+                     headers={'User-Agent': 'custom'}, allow_redirects=False)
     if r.status_code != 200:
         return None
     if next_page is None:
         return hot_list
     for thread in r.json().get('data').get('children'):
         hot_list += [thread.get('data').get('title')]
-    next_page = r.json().get('data').get('next_page')
+    next_page = r.json().get('data').get('after')
     recurse(subreddit, hot_list, next_page)
     return hot_list

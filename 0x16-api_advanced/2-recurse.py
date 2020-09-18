@@ -8,15 +8,16 @@ import requests
 
 def recurse(subreddit, hot_list=[], next_page=None):
     """Returns list of titles"""
-    r = requests.get('https://www.reddit.com/r/{}/hot.json?limit=10'.
-                     format(subreddit), headers={'User-Agent': 'custom'},
+    r = requests.get('https://www.reddit.com/r/{}/hot.json?next_page={}'.
+                     format(subreddit, next_page),
+                     headers={'User-Agent': 'custom'},
                      allow_redirects=False)
     if r.status_code != 200:
         return None
-    if after is None:
+    if next_page is None:
         return hot_list
     for thread in r.json().get('data').get('children'):
         hot_list += [thread.get('data').get('title')]
-    after = r.json().get('data').get('after')
-    recurse(subreddit, hot_list, after)
+    next_page = r.json().get('data').get('next_page')
+    recurse(subreddit, hot_list, next_page)
     return hot_list

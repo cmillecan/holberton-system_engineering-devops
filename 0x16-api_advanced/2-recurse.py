@@ -6,9 +6,9 @@ containing the titles of all hot articles for a given subreddit.
 import requests
 
 
-def recurse(subreddit, hot_list=[], next_page=None):
+def recurse(subreddit, hot_list=[], next_page=''):
     """Returns list of titles"""
-    r = requests.get('https://www.reddit.com/r/{}/hot.json?after={}'.
+    r = requests.get('https://www.reddit.com/r/{}/hot.json'.
                      format(subreddit, next_page),
                      headers={'User-Agent': 'custom'},
                      allow_redirects=False)

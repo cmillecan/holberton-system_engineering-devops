@@ -9,8 +9,8 @@ import requests
 def top_ten(subreddit):
     """Prints the titles of top 10 posts"""
     r = requests.get('https://www.reddit.com/r/{}/hot.json?limit=10'.
-                    format(subreddit), headers={'User-Agent': 'custom'},
-                    allow_redirects=False)
+                     format(subreddit), headers={'User-Agent': 'custom'},
+                     allow_redirects=False)
     if r.status_code == 200:
         for key in r.json().get('data').get('children'):
             print(key.get('data').get('title'))
